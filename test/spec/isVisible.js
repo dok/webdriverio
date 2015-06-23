@@ -16,6 +16,14 @@ describe('isVisible', function() {
             .call(done);
     });
 
+    it('should throw an error when an invalid selector has been passed', function (done) {
+        this.client
+            .isVisible('#1234 invalid selector', function(err) {
+                assert.notEqual(err, null);
+            })
+            .call(done);
+    });
+
     it('should check multiple elements are visible', function(done) {
         this.client
             .isVisible('.visibletest', function(err, isVisible) {
